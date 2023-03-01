@@ -5,31 +5,37 @@ import Data from "../helper/Data"
 
 const Home = () => {
   const [tasks, setTasks] = useState([...Data])
+  const [show, setShow] = useState(true);
+  const [gorevleri, setGorevleri] = useState(tasks.length)
+  console.log(gorevleri)
   
-
-  console.log(tasks)
   
   
+ const getTasks = () => setTasks(tasks)
   
-
  
-
-
-
-
-
-
-
+  
   return (
     <div>
-    <div className="header">
-      <h3>Task Tracker</h3>
-      <button className='btn'>Close Add Task Bar</button>
-    </div>
+      <div className="header">
+        <h3>Task Tracker</h3>
+        <button className='btn' onClick={() => setShow(!show)}>Close Add Task Bar</button>
+      </div>
       
-      <GorevEkle addTasks = {setTasks} tasks = {tasks}  />
+        {show && <GorevEkle addTasks = {setTasks} tasks = {tasks}  />}
+      
+      
 
-      <GorevleriGoster tasks = {tasks} />
+      {tasks.length > 0 ? <GorevleriGoster  tasks = {tasks}  addTasks = {setTasks} /> : <h3>No Tasks Yet</h3>}
+
+      
+     
+     
+      
+      
+       
+      
+
     </div>
   );
 }

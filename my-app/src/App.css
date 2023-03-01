@@ -41,15 +41,15 @@ body {
   border-radius: 5px;
 }
 
-.form-control {
+.form-controll {
   margin: 20px 0;
 }
 
-.form-control label {
+.form-controll label {
   display: block;
 }
 
-.form-control input {
+.form-controll input {
   width: 100%;
   height: 40px;
   padding: 1rem;
@@ -58,7 +58,7 @@ body {
   border: none;
 }
 
-.btn-submit {
+.btn-submit1 {
   /* display: block; */
   width: 100%;
   background-color: purple;

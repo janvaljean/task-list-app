@@ -17,13 +17,14 @@ const GorevEkle = ({addTasks ,tasks}) => {
       return;
     }
    
-    addTasks([form,...tasks]);
+    addTasks([...tasks, form]);
     setForm(initialValue)
+    console.log(tasks);
   }
 
 
   return (
-   <form onClick={onSubmit} className="form-control">
+   <form onClick={onSubmit} className="form-controll">
     <div>
       <label htmlFor="">Task</label>
       <input name="text" placeholder="AddTask" onChange={onChangeInput}  value={form.text}/>
@@ -34,7 +35,7 @@ const GorevEkle = ({addTasks ,tasks}) => {
     </div>
 
         
-      <button onClick={onSubmit} className="btn-submit btn" >Save Task</button>
+      <button onClick={onSubmit} className="btn-submit1 btn" >Save Task</button>
       
         
 
