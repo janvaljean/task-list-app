@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { GiCancel} from "react-icons/gi";
-const GorevleriGoster = ({tasks,addTasks}) => {
+const GorevleriGoster = ({tasks,setTasks}) => {
   
 
-  const initialList =[...tasks];
   
-  const [list, setList] = useState(initialList);
+  
+  
   function handleRemove(id) {
-    const newList =list.filter((item) => item.id !== id);
-    setList(newList);
-    addTasks([...newList])
+   
+    setTasks(tasks.filter((item) => item.id != id));
+    
   }
 
 
@@ -23,10 +23,10 @@ const GorevleriGoster = ({tasks,addTasks}) => {
       <ul className="list">
         {tasks.map((task,index)=>{
           return(
-          <li className="gorev d-flex" key={index}>
+          <li className="gorev d-flex" key={task.id}>
             <span>{task.text}</span>
             <span>{task.day}</span>
-            <span onClick={() => handleRemove(index)} className="ms-auto"><GiCancel/></span>
+            <span onClick={() => handleRemove(task.id)} className="ms-auto"><GiCancel/></span>
             </li>
             )
           

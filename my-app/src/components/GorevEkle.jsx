@@ -1,25 +1,28 @@
 import { useState } from "react"
 
 
-const GorevEkle = ({addTasks ,tasks}) => {
+const GorevEkle = ({setTasks ,tasks}) => {
     const initialValue = {text: "", day: ""}
     const[form, setForm] = useState(initialValue)
     
     
     const onChangeInput = (e) => {
-      setForm({...form, [e.target.name]: e.target.value})
+      setForm({...form, [e.target.name]: e.target.value,
+      id:new Date().getTime()})
+      
       
     }
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-    if(form.text === "" || form.day === ""){
-      return;
-    }
-   
-    addTasks([...tasks, form]);
-    setForm(initialValue)
-    console.log(tasks);
+    
+    const onSubmit = (e) => {
+      e.preventDefault();
+      if(form.text === "" || form.day === ""){
+        return;
+      }
+      
+      setTasks(...form);
+      setForm(initialValue)
+      
+      
   }
 
 
@@ -31,11 +34,11 @@ const GorevEkle = ({addTasks ,tasks}) => {
     </div>
     <div>
       <label htmlFor="">Day & Time</label>
-      <input  name="day" placeholder="AddTask" onChange={onChangeInput}  value={form.day}/>
+      <input  placeholder="AddTask" name="day" onChange={onChangeInput} value={form.day}  />
     </div>
 
         
-      <button onClick={onSubmit} className="btn-submit1 btn" >Save Task</button>
+      <button type="submit" className="btn-submit1 btn" >Save Task</button>
       
         
 

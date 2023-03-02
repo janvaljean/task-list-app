@@ -6,14 +6,9 @@ import Data from "../helper/Data"
 const Home = () => {
   const [tasks, setTasks] = useState([...Data])
   const [show, setShow] = useState(true);
-  const [gorevleri, setGorevleri] = useState(tasks.length)
-  console.log(gorevleri)
   
+  console.log(tasks);
   
-  
- const getTasks = () => setTasks(tasks)
-  
- 
   
   return (
     <div>
