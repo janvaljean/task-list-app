@@ -1,15 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { GiCancel} from "react-icons/gi";
-const GorevleriGoster = ({tasks,setTasks}) => {
+const GorevleriGoster = ({tasks,addTasks}) => {
   
+
 
   
   
   
   function handleRemove(id) {
    
-    setTasks(tasks.filter((item) => item.id != id));
+    addTasks(tasks.filter((item) => item.id != id));
     
+  }
+
+  function getDone(id){
+    if (document.getElementById(id).classList.contains("done")) {
+            document.getElementById(id).classList.remove("done");
+
+          }else{
+            document.getElementById(id).classList.add("done");
+      
+      
+      
+    }
   }
 
 
@@ -20,19 +33,25 @@ const GorevleriGoster = ({tasks,setTasks}) => {
   return <div>
       <div>
       
-      <ul className="list">
-        {tasks.map((task,index)=>{
+      <div className="list">
+        {tasks.map((task,i)=>{
           return(
-          <li className="gorev d-flex" key={task.id}>
-            <span>{task.text}</span>
-            <span>{task.day}</span>
-            <span onClick={() => handleRemove(task.id)} className="ms-auto"><GiCancel/></span>
-            </li>
+            <div  key={i} id={task.id} >
+              <div onClick={()=>getDone(task.id)}  className= "gorev"  key={task.id}>
+                <h6>{task.text}</h6>
+                <div className="d-flex space-between">
+                <p>{task.day}<span  onClick={() => handleRemove(task.id)} className="d-inline-block"><GiCancel/></span></p>
+
+                </div>
+                
+              </div>
+            </div>
+          
             )
           
         })}
        
-      </ul>
+      </div>
         
     </div>
   </div>;

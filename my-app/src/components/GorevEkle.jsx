@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 
-const GorevEkle = ({setTasks ,tasks}) => {
+const GorevEkle = ({addTasks ,tasks}) => {
     const initialValue = {text: "", day: ""}
     const[form, setForm] = useState(initialValue)
     
@@ -19,7 +19,7 @@ const GorevEkle = ({setTasks ,tasks}) => {
         return;
       }
       
-      setTasks(...form);
+      addTasks([...tasks, form])
       setForm(initialValue)
       
       
@@ -34,7 +34,7 @@ const GorevEkle = ({setTasks ,tasks}) => {
     </div>
     <div>
       <label htmlFor="">Day & Time</label>
-      <input  placeholder="AddTask" name="day" onChange={onChangeInput} value={form.day}  />
+      <input type="datetime-local" placeholder="AddTask" name="day" onChange={onChangeInput} value={form.day}  />
     </div>
 
         
